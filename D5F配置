@@ -1,0 +1,143 @@
+产品名称： D5F
+model：DSL-PB17
+
+d5f apollo配置
+1 namespace:factory
+1.1 jl 新增
+    "DSL-PB17": {
+        "ble": "-80",
+        "zigbee": "50"
+    }
+
+1.2 dding1 新增
+    "DSL-PB17": {
+        "ble": "-80",
+        "zigbee": "50"
+    }
+
+1.3 yd-cq 新增
+    "DSL-PB17": {
+        "ble": "-80",
+        "zigbee": "50"
+    }
+
+1.4 fullname_products
+    "YD-D5F": {
+        "model": "DSL-PB17",
+        "gate": "1",
+        "handle": "0"
+    }
+
+1.5 version_check_list 新增
+    DSL-PB17
+
+
+2. complexStage1下新增key-val：
+key: "DSL-PB17"
+val: {
+    "Motherboard": {
+        "sleep_power": {
+            "pre_detect_wait_time": 5000,
+            "pre_detect_sample_num": 3,
+            "def_test_sampling_time": 5000,
+            "re_test_sampling_time": 8000,
+            "min": 10,
+            "max": 500,
+            "mid": 65
+        }
+    },
+    "Finger": {
+        "sleep_power": {
+            "pre_detect_wait_time": 5000,
+            "pre_detect_sample_num": 3,
+            "def_test_sampling_time": 3000,
+            "re_test_sampling_time": 5000,
+            "min": 10,
+            "max": 20,
+            "mid": 18
+        },
+        "work_power": {
+            "pre_detect_wait_time": 5000,
+            "pre_detect_sample_num": 3,
+            "def_test_sampling_time": 3000,
+            "re_test_sampling_time": 5000,
+            "min": 22000,
+            "max": 40000,
+            "mid": 38000
+        }
+    },
+    "ZB": {
+        "sleep_power": {
+            "pre_detect_wait_time": 5000,
+            "pre_detect_sample_num": 3,
+            "def_test_sampling_time": 3000,
+            "re_test_sampling_time": 5000,
+            "min": 51,
+            "max": 53,
+            "mid": 52
+        }
+    },
+    "Touch": {
+        "sleep_power": {
+            "pre_detect_wait_time": 5000,
+            "pre_detect_sample_num": 3,
+            "def_test_sampling_time": 3000,
+            "re_test_sampling_time": 5000,
+            "min": 5,
+            "max": 120,
+            "mid": 25
+        }
+    }
+}
+
+
+3. complexStage2下新增key-val
+key: "DSL-PB17"
+val: {
+    "WholeMachine": {
+        "sleep_power": {
+            "pre_detect_wait_time": 25000,
+            "pre_detect_sample_num": 6,
+            "def_test_sampling_time": 8000,
+            "re_test_sampling_time": 15000,
+            "min": 10,
+            "max": 500,
+            "mid": 65
+        }
+    }
+}
+
+4. namespace:factory_serial_list
+ 4.1 修改'lk' key-val
+    "95": {
+        "model": "DSL-PB17",
+        "channel": "2B",
+        "sn_prefix": "lkjl0095",
+        "device_type": "102095001000",
+        "setup_code": 1,
+        "identifier": "lock_95"
+    },
+
+5 namespace: assemble
+  5.1 key:apartment 中修改：key:"DSL-PB11|DSL-PB10|TFPL110|DSL-PB15|DSL-PB16" 中新增:"DSL-PB11|DSL-PB10|TFPL110|DSL-PB15|DSL-PB16|DSL-PB17"
+
+
+6. DB插入model (产测服务mongodb、tob mongodb)
+
+var doc = {
+    "brand" : "dding",
+    "device_type" : "102095001000",
+    "model" : "DSL-PB17",
+    "name" : "D5F",
+    "manufacturer" : "yunding"
+}
+db.getCollection('modelinfos').insert(doc)
+
+var doc2 = {
+    "model" : "DSL-PB17",
+    "qmax" : 255.0,
+    "qmin" : 0.0,
+    "imax" : 255.0,
+    "imin" : 0.0
+}
+db.getCollection('iqthresholds').insert(doc2)
